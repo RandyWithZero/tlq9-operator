@@ -1,0 +1,24 @@
+# permissions for end users to edit tonglinkqclusters.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tonglinkqcluster-editor-role
+rules:
+- apiGroups:
+  - tlq.tongtech.com
+  resources:
+  - tonglinkqclusters
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - tlq.tongtech.com
+  resources:
+  - tonglinkqclusters/status
+  verbs:
+  - get
