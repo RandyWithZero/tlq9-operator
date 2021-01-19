@@ -18,7 +18,6 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -27,13 +26,14 @@ import (
 // TongLinkQWorkerSpec defines the desired state of TongLinkQWorker
 type TongLinkQWorkerSpec struct {
 	// master is the master info  TongLinkQCluster.
-	Master TongLinkQMaster `json:"master,omitempty"`
+	WorkerName string `json:"workerName,omitempty"`
 }
 
 // TongLinkQClusterStatus defines the observed state of TongLinkQCluster
 type TongLinkQWorkerStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	WorkerParse string `json:"workerParse,omitempty"`
 }
 
 //+kubebuilder:object:root=true
@@ -46,8 +46,8 @@ type TongLinkQWorker struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   TongLinkQClusterSpec   `json:"spec,omitempty"`
-	Status TongLinkQClusterStatus `json:"status,omitempty"`
+	Spec   TongLinkQWorkerSpec   `json:"spec,omitempty"`
+	Status TongLinkQWorkerStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
@@ -56,7 +56,7 @@ type TongLinkQWorker struct {
 type TongLinkQWorkerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []TongLinkQCluster `json:"items"`
+	Items           []TongLinkQWorker `json:"items"`
 }
 
 func init() {

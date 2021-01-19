@@ -26,13 +26,14 @@ import (
 // TongLinkQMasterSpec defines the desired state of TongLinkQMaster
 type TongLinkQMasterSpec struct {
 	// master is the master info  TongLinkQCluster.
-	Master TongLinkQMaster `json:"master,omitempty"`
+	MasterName string `json:"masterName,omitempty"`
 }
 
 // TongLinkQClusterStatus defines the observed state of TongLinkQCluster
 type TongLinkQMasterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	MasterParse string `json:"masterParse,omitempty"`
 }
 
 //+kubebuilder:object:root=true
@@ -45,8 +46,8 @@ type TongLinkQMaster struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   TongLinkQClusterSpec   `json:"spec,omitempty"`
-	Status TongLinkQClusterStatus `json:"status,omitempty"`
+	Spec   TongLinkQMasterSpec   `json:"spec,omitempty"`
+	Status TongLinkQMasterStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
@@ -55,7 +56,7 @@ type TongLinkQMaster struct {
 type TongLinkQMasterList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []TongLinkQCluster `json:"items"`
+	Items           []TongLinkQMaster `json:"items"`
 }
 
 func init() {
