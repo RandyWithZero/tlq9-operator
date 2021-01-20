@@ -25,8 +25,10 @@ import (
 
 // TongLinkQClusterSpec defines the desired state of TongLinkQCluster
 type TongLinkQClusterSpec struct {
-	WorkerSize         uint8
-	EnableWorkerBackup bool
+	// worker size
+	WorkerSize uint8 `json:"workerSize,omitempty"`
+	//enable worker backup
+	EnableWorkerBackup bool `json:"enableWorkerBackup,omitempty"`
 }
 
 // TongLinkQClusterStatus defines the observed state of TongLinkQCluster

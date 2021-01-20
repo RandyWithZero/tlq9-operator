@@ -60,6 +60,9 @@ type TongLinkQMasterStatus struct {
 //+kubebuilder:subresource:status
 //+kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 //+kubebuilder:printcolumn:name="Name",type="string",JSONPath=".metadata.name"
+//+kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.parse"
+//+kubebuilder:printcolumn:name="MasterIp",type="string",JSONPath=".status.masterIp",priority=10
+//+kubebuilder:printcolumn:name="NodeIp",type="string",JSONPath=".status.nodeIp",priority=10
 
 // TongLinkQCluster is the Schema for the tonglinkqclusters API
 type TongLinkQMaster struct {
