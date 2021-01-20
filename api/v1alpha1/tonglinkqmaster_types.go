@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -25,15 +26,34 @@ import (
 
 // TongLinkQMasterSpec defines the desired state of TongLinkQMaster
 type TongLinkQMasterSpec struct {
-	// master is the master info  TongLinkQCluster.
-	MasterName string `json:"masterName,omitempty"`
+	// master image
+	Image string `json:"image,omitempty"`
+	// master image pull policy
+	ImagePullPolicy v1.PullPolicy    `json:"imagePullPolicy,omitempty"`
+	Envs            []v1.EnvVar      `json:"env,omitempty"`
+	Volumes         []v1.Volume      `json:"volumes,omitempty"`
+	VolumeMounts    []v1.VolumeMount `json:"volumeMounts,omitempty"`
+	Port            int32            `json:"port,omitempty"`
 }
+
+type MasterStatus string
+
+var (
+	Healthy   MasterStatus = "Healthy"
+	UnHealthy MasterStatus = "UnHealthy"
+	Pending   MasterStatus = "Pending"
+	Fail      MasterStatus = "Fail"
+)
 
 // TongLinkQClusterStatus defines the observed state of TongLinkQCluster
 type TongLinkQMasterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	MasterParse string `json:"masterParse,omitempty"`
+	Parse MasterStatus `json:"parse,omitempty"`
+	// master pod ip
+	MasterIp string `json:"masterIp,omitempty"`
+	// master pod node host ip
+	NodeIp string `json:"nodeIp,omitempty"`
 }
 
 //+kubebuilder:object:root=true

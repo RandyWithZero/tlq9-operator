@@ -25,7 +25,8 @@ import (
 
 // TongLinkQClusterSpec defines the desired state of TongLinkQCluster
 type TongLinkQClusterSpec struct {
-	// master is the master info  TongLinkQCluster.
+	WorkerSize         uint8
+	EnableWorkerBackup bool
 }
 
 // TongLinkQClusterStatus defines the observed state of TongLinkQCluster
