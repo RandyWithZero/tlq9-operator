@@ -57,6 +57,7 @@ type TongLinkQMasterReconciler struct {
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.7.0/pkg/reconcile
 func (r *TongLinkQMasterReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := r.Log.WithValues("tonglinkqmaster", req.NamespacedName)
+	log.Info("TongLinkQMasterReconciler======================================================================================================")
 
 	master := &tlqv1alpha1.TongLinkQMaster{}
 	err := r.Get(ctx, req.NamespacedName, master)
